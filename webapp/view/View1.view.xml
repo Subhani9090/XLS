@@ -1,0 +1,50 @@
+<mvc:View controllerName="xls.controller.View1" xmlns:l="sap.ui.layout" xmlns:model="sap.ui.model" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	xmlns:html="http://www.w3.org/1999/xhtml" displayBlock="true">
+	<App>
+		<pages>
+			<Page title="{i18n>title}">
+				<content>
+					<Table id="idProductsTable" inset="false" items="{ path: '/ProductCollection', sorter: { path: 'Name' } }">
+						<headerToolbar>
+							<Toolbar>
+								<Title text="Product Information"></Title>
+								<ToolbarSpacer></ToolbarSpacer>
+								<Button icon="sap-icon://download" press="onDataExport"/>
+							</Toolbar>
+						</headerToolbar>
+						<columns >
+							<Column id="productCol">
+								<Text text="Product"/>
+							</Column>
+							<Column id="supplierCol">
+								<Text text="Supplier"/>
+							</Column>
+							<Column id="dimensionsCol">
+								<Text text="Dimensions"/>
+							</Column>
+							<Column id="weightCol">
+								<Text text="Weight"/>
+							</Column>
+							<Column id="priceCol">
+								<Text text="Price"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<ObjectIdentifier title="{Name}" text="{ProductId}"/>
+									<Text text="{SupplierName}"/>
+									<Text text="{Width} x {Depth} x {Height} {DimUnit}"/>
+									<ObjectNumber number="{WeightMeasure}" unit="{WeightUnit}" state="{ path: 'WeightMeasure', formatter: 'xls.Formatter.weightState' }"/>
+									<ObjectNumber
+										number="{ parts:[{path:'Price'},{path:'CurrencyCode'}], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false} }"
+										unit="{CurrencyCode}"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
