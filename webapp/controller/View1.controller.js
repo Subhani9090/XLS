@@ -25,7 +25,7 @@ sap.ui.define([
 				alert('hi');
 			}*/
 
-		onDataExport : sap.m.Table.prototype.exportData || function(oEvent) {
+		onDataExport: sap.m.Table.prototype.exportData || function(oEvent) {
 			var oExport = new Export({
 
 				// Type that will be used to generate the content. Own ExportType's can be created to support other formats
@@ -87,12 +87,12 @@ sap.ui.define([
 						}
 					},
 
-				{
-					name : "Price",
-					template : {
-						content : "{Price} {CurrencyCode}"
+					{
+						name: "Price",
+						template: {
+							content: "{Price} {CurrencyCode}"
+						}
 					}
-				}
 
 				]
 			});
